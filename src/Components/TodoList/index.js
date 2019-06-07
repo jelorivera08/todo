@@ -4,6 +4,7 @@ import Todo from './Todo';
 import { connect } from 'react-redux';
 import { FILTERS } from '../../constants';
 import { toggleTodoStatus } from '../../actions';
+import { bindActionCreators } from 'redux';
 
 const TodoList = (props) => {
   const handleStatusChange = (todo) => {
@@ -30,9 +31,8 @@ const mapStateToProps = (state) => ({
   filter: state.filters.activeFilter,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateTodos: (todo) => dispatch(toggleTodoStatus(todo)),
-});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ updateTodos: toggleTodoStatus }, dispatch);
 
 export default connect(
   mapStateToProps,

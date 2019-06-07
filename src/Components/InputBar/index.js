@@ -2,12 +2,13 @@ import React from 'react';
 import styles from './InputBar.module.css';
 import { connect } from 'react-redux';
 import { addATodo } from '../../actions';
+import { bindActionCreators } from 'redux';
 
 const InputBar = (props) => {
   const handleKeyPress = (e) => {
     var code = e.keyCode || e.which;
     if (code === 13) {
-      props.addTodo(e.target.value);
+      props.addATodo(e.target.value);
       e.target.value = '';
     }
   };
@@ -26,9 +27,8 @@ const InputBar = (props) => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = (dispatch) => ({
-  addTodo: (text) => dispatch(addATodo(text)),
-});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ addATodo }, dispatch);
 
 export default connect(
   mapStateToProps,

@@ -3,6 +3,7 @@ import styles from './index.module.css';
 import { connect } from 'react-redux';
 import { FILTERS } from '../../constants';
 import { changeFilter } from '../../actions';
+import { bindActionCreators } from 'redux';
 
 const Filters = (props) => {
   const { activeFilter, changeFilter } = props;
@@ -41,9 +42,8 @@ const mapStateToProps = (state) => ({
   activeFilter: state.filters.activeFilter,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  changeFilter: (filter) => dispatch(changeFilter(filter)),
-});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ changeFilter }, dispatch);
 
 export default connect(
   mapStateToProps,
