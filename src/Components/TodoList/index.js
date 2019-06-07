@@ -3,6 +3,7 @@ import styles from './TodoList.module.css';
 import Todo from './Todo';
 import { connect } from 'react-redux';
 import { FILTERS } from '../../constants';
+import { toggleTodoStatus } from '../../actions';
 
 const TodoList = (props) => {
   const handleStatusChange = (todo) => {
@@ -30,11 +31,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateTodos: (todo) =>
-    dispatch({
-      type: 'UPDATE_TODO',
-      todo,
-    }),
+  updateTodos: (todo) => dispatch(toggleTodoStatus(todo)),
 });
 
 export default connect(

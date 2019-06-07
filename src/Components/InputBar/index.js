@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './InputBar.module.css';
 import { connect } from 'react-redux';
+import { addATodo } from '../../actions';
 
 const InputBar = (props) => {
   const handleKeyPress = (e) => {
@@ -26,7 +27,7 @@ const InputBar = (props) => {
 const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
-  addTodo: (text) => dispatch({ type: 'ADD_TODO', text }),
+  addTodo: (text) => dispatch(addATodo(text)),
 });
 
 export default connect(

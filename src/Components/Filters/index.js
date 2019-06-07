@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './index.module.css';
 import { connect } from 'react-redux';
 import { FILTERS } from '../../constants';
+import { changeFilter } from '../../actions';
 
 const Filters = (props) => {
   const { activeFilter, changeFilter } = props;
@@ -41,7 +42,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeFilter: (filter) => dispatch({ type: 'CHANGE_FILTER', filter }),
+  changeFilter: (filter) => dispatch(changeFilter(filter)),
 });
 
 export default connect(
